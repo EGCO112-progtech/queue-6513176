@@ -10,7 +10,7 @@
 #define Node_h
 
 struct node {
-  int data;
+  int order_number,n;
   struct node *nextPtr;
 };
 
@@ -20,7 +20,7 @@ typedef struct node *NodePtr;
 void enqueue(NodePtr *head, NodePtr *tail, int x) {
   Node *new_node = (NodePtr)malloc(sizeof(Node));
   if (new_node) {
-    new_node->data = x;
+    new_node->order_number = x;
     new_node->nextPtr = NULL;
     if (*head == NULL)
       *head = new_node;
@@ -33,9 +33,11 @@ void enqueue(NodePtr *head, NodePtr *tail, int x) {
 }
 
 int dequeue(NodePtr *head, NodePtr *tail) {
+  
   NodePtr t = *head;
+  
   if (t) {
-    int value = t->data;
+    int value = t->order_number;
     *head = (*head)->nextPtr;
     if (!*(head))
       *tail = NULL;
